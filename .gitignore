@@ -1,0 +1,9 @@
+# Build/screenshot tooling dependencies (not site content)
+node_modules/
+tools/node_modules/
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log

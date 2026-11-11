@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>studyflow — UI/UX case study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@600;700;800&display=block" rel="stylesheet">
+<style>@page { size: 1920px 1080px; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink: #20201e; --paper: #f8f7f2; --muted: #6f6e68; --line: #e4e1d6;
+  --lime: #d9f99d; --lime-d: #bfe978; --lime-bg: #e8f8c9;
+  --purple: #7c5cff; --orange: #ff9b62; --green: #66a47b;
+}
+html, body { background: #bdbcb6; }
+body { font-family: 'DM Sans', sans-serif; color: var(--ink); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+/* ---------- Slide shell ---------- */
+.slide { position: relative; width: 1920px; height: 1080px; overflow: hidden; padding: 92px 120px 110px; background: var(--paper); break-after: page; }
+.slide:last-child { break-after: auto; }
+.slide.dark { background: #1c1c1a; color: #fff; }
+.slide.lime { background: var(--lime-bg); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.col.text { display: flex; flex-direction: column; justify-content: center; }
+.col.stage { position: relative; display: flex; align-items: center; justify-content: center; height: 878px; }
+
+.label { display: flex; align-items: center; gap: 14px; margin-bottom: 26px; color: #8a887f; font: 700 17px 'DM Sans'; letter-spacing: .16em; text-transform: uppercase; }
+.label span { display: grid; width: 44px; height: 44px; place-items: center; border-radius: 12px; background: var(--ink); color: var(--lime); font: 800 16px 'Manrope'; letter-spacing: 0; }
+.label.on-dark { color: #a3a29b; }
+.label.on-dark span { background: var(--lime); color: var(--ink); }
+
+h1 { font: 800 124px/.98 'Manrope'; letter-spacing: -.05em; }
+h1 em { color: var(--lime); font-style: normal; }
+h2 { max-width: 780px; font: 800 74px/1.03 'Manrope'; letter-spacing: -.045em; }
+h2.wide { max-width: 1500px; }
+h2.light, .light { color: #fff; }
+.lead { max-width: 690px; margin-top: 28px; color: var(--muted); font-size: 27px; line-height: 1.5; }
+.lead em { color: var(--ink); font-style: normal; font-weight: 700; }
+.lead.light { color: #b9b8b0; }
+
+.foot { position: absolute; right: 120px; bottom: 42px; left: 120px; display: flex; justify-content: space-between; color: #9b998f; font: 500 15px 'DM Sans'; letter-spacing: .04em; }
+.foot span:first-child { display: flex; align-items: center; gap: 10px; }
+.foot.on-dark { color: #77766f; }
+
+.mark { display: inline-block; flex: 0 0 auto; width: 22px; height: 22px; border-radius: 6px; background:
+  linear-gradient(var(--lime), var(--lime)) 5px 11px / 3px 6px no-repeat,
+  linear-gradient(var(--lime), var(--lime)) 10px 5px / 3px 12px no-repeat,
+  linear-gradient(var(--lime), var(--lime)) 15px 8px / 3px 9px no-repeat, #20201e; }
+.dark .mark { box-shadow: 0 0 0 1px #3d3d39; }
+.mark.big { zoom: 1.9; }
+.brand { display: flex; align-items: center; gap: 18px; margin-bottom: 52px; font: 800 36px 'Manrope'; letter-spacing: -.03em; }
+
+/* ---------- iPhone frame ---------- */
+.phone { position: relative; flex: 0 0 auto; width: calc(421px * var(--s)); height: calc(880px * var(--s)); }
+.phone > .phone-img { position: absolute; top: calc(-60px * var(--s)); left: calc(-120px * var(--s)); width: calc(661px * var(--s)); max-width: none; height: auto; }
+.device { position: absolute; top: 0; left: 0; width: 421px; height: 880px; padding: 14px; border-radius: 68px; background: #1b1b1d; transform: scale(var(--s)); transform-origin: top left;
+  box-shadow: inset 0 0 0 2px #3a3a3e, inset 0 0 0 5px #0d0d0e, 0 70px 110px -45px rgba(30, 28, 20, .5), 0 30px 60px -35px rgba(30, 28, 20, .4); }
+.dark .device { box-shadow: inset 0 0 0 2px #45454a, inset 0 0 0 5px #0d0d0e, 0 70px 110px -40px rgba(0, 0, 0, .7); }
+.hw { position: absolute; width: 4px; border-radius: 2px; background: #2a2a2d; }
+.hw.a { top: 150px; left: -3px; height: 32px; } .hw.v1 { top: 205px; left: -3px; height: 60px; }
+.hw.v2 { top: 280px; left: -3px; height: 60px; } .hw.p { top: 230px; right: -3px; height: 96px; }
+.screen { position: relative; display: flex; flex-direction: column; width: 393px; height: 852px; overflow: hidden; border-radius: 55px; background: #fbfaf6; }
+.status { position: relative; display: flex; flex: 0 0 54px; align-items: center; justify-content: space-between; padding: 6px 30px 0 46px; }
+.time { font: 700 16px/1 'DM Sans', sans-serif; letter-spacing: -.2px; }
+.island { position: absolute; top: 11px; left: 50%; width: 122px; height: 35px; border-radius: 20px; background: #000; transform: translateX(-50%); }
+.icons { display: flex; align-items: center; gap: 6px; fill: currentColor; }
+.screen img { display: block; width: 393px; height: 776px; }
+.home { display: flex; flex: 0 0 22px; align-items: center; justify-content: center; }
+.home span { width: 134px; height: 5px; border-radius: 3px; background: #111; }
+.phone > .marker { z-index: 3; }
+.marker { position: absolute; display: grid; width: 46px; height: 46px; place-items: center; border-radius: 50%; background: var(--ink); color: var(--lime); font: 800 21px 'Manrope'; transform: translate(-50%, -50%); box-shadow: 0 0 0 7px rgba(217, 249, 157, .85), 0 10px 20px rgba(0, 0, 0, .25); }
+
+/* ---------- Cover & closing ---------- */
+.cover, .closing { display: grid; grid-template-columns: 790px 1fr; align-items: center; padding-top: 70px; }
+.cover-copy p, .closing-copy p { max-width: 640px; margin: 36px 0 56px; color: #b9b8b0; font-size: 28px; line-height: 1.5; }
+.meta { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 56px; }
+.meta dt { margin-bottom: 8px; color: #8b8a83; font-size: 15px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.meta dd { font-size: 21px; font-weight: 500; }
+.cover-phones { display: flex; align-items: center; justify-content: center; }
+.cover-phones .phone { z-index: 1; }
+.cover-phones .front { z-index: 2; }
+.tilt-l { transform: translate(70px, 50px) rotate(-7deg); }
+.tilt-r { transform: translate(-70px, 50px) rotate(7deg); }
+.links { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+.links b { margin-right: 14px; padding: 4px 10px; border-radius: 8px; background: var(--lime); color: var(--ink); font-size: 15px; letter-spacing: .06em; text-transform: uppercase; }
+.links span { display: flex; align-items: center; padding: 16px 22px; border-radius: 14px; background: #2b2b28; color: var(--lime); font-size: 21px; font-weight: 700; }
+
+/* ---------- Overview facts ---------- */
+.facts { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 48px; margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--line); }
+.facts dt { margin-bottom: 8px; color: #8a887f; font-size: 14px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.facts dd { font-size: 21px; font-weight: 500; line-height: 1.4; }
+.lime-blob::before { content: ''; position: absolute; width: 740px; height: 740px; border-radius: 50%; background: var(--lime); }
+.lime-blob .phone { z-index: 1; }
+
+/* ---------- Cards ---------- */
+.cards { display: grid; gap: 26px; margin-top: 64px; }
+.cards.three { grid-template-columns: repeat(3, 1fr); }
+.cards.six { grid-template-columns: repeat(3, 1fr); margin-top: 70px; }
+.cards.six article { min-height: 250px; }
+.cards article { padding: 44px 44px; border: 1px solid var(--line); border-radius: 28px; background: #fffefb; }
+.cards .num { color: #b5b3a9; font: 800 20px 'Manrope'; }
+.cards h3 { margin: 14px 0 12px; font: 800 36px 'Manrope'; letter-spacing: -.03em; }
+.cards.six h3 { margin-top: 0; font-size: 30px; }
+.cards p { color: var(--muted); font-size: 21px; line-height: 1.5; }
+.principles { display: grid; grid-template-columns: 230px repeat(3, 1fr); gap: 36px; align-items: start; margin-top: 30px; padding: 44px 44px; border-radius: 28px; background: var(--ink); color: #c9c8c0; font-size: 19px; line-height: 1.5; }
+.principles .pl { color: var(--lime); font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.principles strong { display: block; margin-bottom: 6px; color: #fff; font: 800 28px 'Manrope'; }
+
+/* ---------- Persona ---------- */
+.persona { display: grid; gap: 22px; }
+.persona article { padding: 30px 36px; border-radius: 24px; background: #fffefb; }
+.persona h3 { margin-bottom: 14px; color: #7c8a5c; font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.persona ul { display: grid; gap: 10px; list-style: none; }
+.persona li { position: relative; padding-left: 26px; font-size: 22px; line-height: 1.4; }
+.persona li::before { content: ''; position: absolute; top: 12px; left: 0; width: 9px; height: 9px; border-radius: 3px; background: var(--ink); }
+.quote { margin-top: 52px; padding-left: 28px; border-left: 6px solid var(--ink); font: 700 38px/1.3 'Manrope'; letter-spacing: -.02em; }
+.quote em { font-style: normal; text-decoration: underline; text-decoration-thickness: 4px; text-underline-offset: 7px; }
+
+/* ---------- Flow ---------- */
+.flow { display: grid; gap: 50px; margin-top: 80px; }
+.lane { position: relative; display: flex; align-items: center; gap: 12px; padding-left: 190px; }
+.lane-name { position: absolute; top: 50%; left: 0; color: #8a887f; font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; transform: translateY(-50%); }
+.global .lane-name { position: static; width: 190px; margin-left: -190px; transform: none; }
+.node { min-width: 172px; padding: 18px 22px; border: 1px solid var(--line); border-radius: 18px; background: #fffefb; }
+.node strong { display: block; font: 800 22px 'Manrope'; letter-spacing: -.02em; }
+.node span { display: block; margin-top: 4px; color: var(--muted); font-size: 15px; }
+.node.accent { border-color: var(--lime-d); background: var(--lime); }
+.node.big { padding: 26px 30px; }
+.node.big strong { font-size: 30px; }
+.node.dark { border-color: var(--ink); background: var(--ink); color: #fff; }
+.node.dark span { color: #b3b2aa; }
+.arrow { position: relative; flex: 0 0 34px; height: 2px; background: #b9b6ab; }
+.arrow::after { content: ''; position: absolute; top: -6px; right: -2px; border: 7px solid transparent; border-left: 10px solid #b9b6ab; border-right: 0; }
+.arrow.both::before { content: ''; position: absolute; top: -6px; left: -2px; border: 7px solid transparent; border-right: 10px solid #b9b6ab; border-left: 0; }
+.drop { height: 0; }
+.hub { align-items: flex-start; }
+.hub .arrow { margin-top: 52px; flex-basis: 46px; }
+.hubcard { flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chips span, .global > span:not(.lane-name) { padding: 8px 14px; border-radius: 99px; background: #eeece5; color: #55544f; font-size: 15px; font-weight: 500; }
+.global { display: flex; align-items: center; gap: 10px; padding-left: 190px; }
+.global > span:not(.lane-name) { border: 1px solid var(--line); background: #fffefb; }
+
+/* ---------- Phone rows ---------- */
+.row { display: flex; align-items: flex-start; margin-top: 46px; }
+.row.four { justify-content: space-between; }
+.row.three-wide { justify-content: space-around; margin-top: 38px; }
+figure { display: flex; flex-direction: column; align-items: center; width: 330px; }
+figcaption { max-width: 300px; margin-top: 26px; color: var(--muted); font-size: 18px; line-height: 1.45; text-align: center; }
+figcaption strong { display: block; margin-bottom: 6px; color: var(--ink); font: 800 23px 'Manrope'; letter-spacing: -.02em; }
+.dark figcaption { color: #a9a8a0; }
+.dark figcaption strong { color: #fff; }
+.split-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 80px; }
+.split-head h2 { max-width: none; white-space: nowrap; }
+.split-head .lead { max-width: 620px; margin: 0; font-size: 22px; }
+
+.duo .back { z-index: 0; margin-right: -110px; transform: translateY(46px); }
+.duo .phone:not(.back) { z-index: 1; }
+
+.points { display: grid; gap: 26px; margin-top: 44px; list-style: none; counter-reset: p; }
+.points li { display: grid; grid-template-columns: 58px 1fr; column-gap: 4px; counter-increment: p; }
+.points li::before { content: counter(p); grid-row: span 2; display: grid; width: 44px; height: 44px; place-items: center; border-radius: 50%; background: var(--ink); color: var(--lime); font: 800 19px 'Manrope'; }
+.points strong { font: 800 26px 'Manrope'; letter-spacing: -.02em; }
+.points span { margin-top: 4px; color: var(--muted); font-size: 20px; line-height: 1.45; }
+.dark .points li::before { background: var(--lime); color: var(--ink); }
+.dark .points span { color: #b5b4ac; }
+
+/* ---------- Design system ---------- */
+.ds { display: grid; grid-template-columns: 1.15fr 1fr 1.35fr; gap: 26px; margin-top: 50px; }
+.ds-block { padding: 34px 36px; border: 1px solid var(--line); border-radius: 28px; background: #fffefb; }
+.ds-block h3 { margin-bottom: 24px; color: #8a887f; font-size: 15px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.swatches { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.swatch { display: flex; flex-direction: column; justify-content: flex-end; height: 150px; padding: 18px 20px; border: 1px solid rgba(0, 0, 0, .06); border-radius: 18px; }
+.swatch strong { font: 800 20px 'Manrope'; }
+.swatch span { margin-top: 2px; font-size: 15px; opacity: .75; }
+.type { display: flex; align-items: center; gap: 26px; margin-bottom: 30px; }
+.type strong { display: block; font-size: 23px; }
+.type div span { color: var(--muted); font-size: 17px; }
+.t-display { font: 800 118px/1 'Manrope'; letter-spacing: -.05em; }
+.t-body { font: 400 118px/1 'DM Sans'; }
+.comps { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.c-btn { padding: 15px 24px; border: 1px solid transparent; border-radius: 14px; font-size: 19px; font-weight: 700; }
+.c-btn.primary { background: var(--lime); color: #223014; }
+.c-btn.dark { background: var(--ink); color: #fff; }
+.c-btn.ghost { border-color: var(--line); background: #fff; }
+.c-chip { padding: 8px 14px; border-radius: 99px; background: #f3f1eb; color: #77746d; font-size: 15px; font-weight: 700; }
+.c-chip.warn { background: #fde8e3; color: #b14e3d; }
+.c-toggle { position: relative; width: 54px; height: 30px; border-radius: 99px; background: #dcd9cf; }
+.c-toggle i { position: absolute; top: 4px; left: 4px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); }
+.c-toggle.on { background: #98be51; }
+.c-toggle.on i { left: 28px; }
+.blocks { display: grid; gap: 12px; margin-top: 26px; }
+.c-ev { padding: 15px 20px; border-left: 5px solid; border-radius: 12px; }
+.c-ev strong { display: block; font-size: 20px; }
+.c-ev span { font-size: 15px; opacity: .8; }
+.c-ev.class { border-color: var(--purple); background: #eee9ff; color: #493691; }
+.c-ev.study { border-color: #91ad4d; background: #eff5dd; color: #566d25; }
+.c-ev.activity { border-color: var(--orange); background: #fff0e7; color: #9c512c; }
+
+/* ---------- Responsive ---------- */
+.responsive { position: relative; height: 720px; margin-top: 44px; }
+.browser { position: absolute; top: 0; left: 0; width: 1060px; overflow: hidden; border-radius: 20px; background: #fff; box-shadow: 0 50px 90px -35px rgba(40, 55, 10, .4); }
+.bar { display: flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-bottom: 1px solid var(--line); background: #f1f0ea; }
+.bar i { width: 12px; height: 12px; border-radius: 50%; background: #d6d3c9; }
+.bar span { margin-left: 18px; padding: 6px 16px; border-radius: 8px; background: #fff; color: var(--muted); font-size: 14px; }
+.browser img { display: block; width: 100%; }
+.responsive .over { position: absolute; top: 60px; left: 940px; }
+.aside { position: absolute; right: 120px; bottom: 330px; width: 380px; color: var(--muted); font-size: 24px; line-height: 1.5; }
+</style></head><body><section class="slide dark cover">
+  <div class="cover-copy">
+    <div class="brand"><i class="mark big"></i>studyflow</div>
+    <h1>A calmer way<br>to plan your<br><em>semester.</em></h1>
+    <p>Mobile-first schedule builder that turns classes, study goals and campus life into one balanced week.</p>
+    <dl class="meta">
+      <div><dt>Project</dt><dd>UI/UX case study</dd></div>
+      <div><dt>Platform</dt><dd>Responsive web · mobile first</dd></div>
+      <div><dt>Year</dt><dd>2026</dd></div>
+    </dl>
+  </div>
+  <div class="cover-phones">
+    <div class="phone tilt-l" style="--s:0.66"><img class="phone-img" src="phones/01-welcome.png" alt=""></div>
+    <div class="phone front" style="--s:0.8"><img class="phone-img" src="phones/08-overview.png" alt=""></div>
+    <div class="phone tilt-r" style="--s:0.66"><img class="phone-img" src="phones/10-schedule.png" alt=""></div>
+  </div><div class="foot on-dark"><span><i class="mark"></i>studyflow — UI/UX case study</span><span>01</span></div></section>
+<section class="slide paper split">
+  <div class="col text">
+    <div class="label "><span>01</span>Overview</div>
+    <h2>Planning a semester shouldn’t feel like a second job.</h2>
+    <p class="lead">studyflow asks three quick questions — what you’re taking, how you like to study, and what else fills your week — then builds a balanced weekly plan that protects focus time around everything else.</p>
+    <dl class="facts">
+      <div><dt>My role</dt><dd>Product design, UX, UI and front-end build</dd></div>
+      <div><dt>Deliverables</dt><dd>User flows, wireframes, UI kit, working app</dd></div>
+      <div><dt>Built with</dt><dd>React · TypeScript · Vite · Tailwind · Figma</dd></div>
+      <div><dt>Live</dt><dd>coolgithub1.github.io/School-Schedule-Builder-App</dd></div>
+    </dl>
+  </div>
+  <div class="col stage lime-blob"><div class="phone " style="--s:0.92"><img class="phone-img" src="phones/07-week-ready.png" alt=""></div></div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>02</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>02</span>The problem</div>
+  <h2 class="wide">Students don’t lack ambition. They lack a plan that survives the week.</h2>
+  <div class="cards three">
+    <article><b class="num">01</b><h3>Scattered</h3><p>Classes live in the student portal, deadlines in five syllabi, everything else in notes and group chats.</p></article>
+    <article><b class="num">02</b><h3>Rigid</h3><p>Hand-made plans break the moment a week changes — so they get abandoned by week three.</p></article>
+    <article><b class="num">03</b><h3>Heavy</h3><p>Most planners take longer to set up and maintain than the time they actually save.</p></article>
+  </div>
+  <div class="principles">
+    <span class="pl">Design principles</span>
+    <div><strong>Calm</strong>Warm palette, generous space, one clear primary action per screen.</div>
+    <div><strong>Balanced</strong>Study time spread across the lightest days, tracked against a weekly goal.</div>
+    <div><strong>Forgiving</strong>Undo everywhere. Conflicts warn instead of block. Nothing is ever lost.</div>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>03</span></div></section>
+<section class="slide lime split">
+  <div class="col text">
+    <div class="label "><span>03</span>Who it’s for</div>
+    <h2>Meet Jordan.</h2>
+    <p class="lead">Proto-persona · second-year student juggling four classes, a design club, the gym and a part-time life.</p>
+    <div class="quote">“I know what I need to do. I just never know <em>when</em> I’m going to do it.”</div>
+  </div>
+  <div class="col persona">
+    <article><h3>Goals</h3><ul><li>Protect real study time every week</li><li>See today at a glance, between classes</li><li>Never get surprised by a deadline</li></ul></article>
+    <article><h3>Frustrations</h3><ul><li>Generic calendars don’t understand classes vs. study</li><li>Re-planning after one busy day feels like starting over</li><li>Apps that need an account before showing any value</li></ul></article>
+    <article><h3>Context</h3><ul><li>Plans on a phone, between lectures</li><li>Checks the week on a laptop on Sunday night</li></ul></article>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>04</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>04</span>User flow</div>
+  <h2 class="wide">From first tap to a full week in three steps.</h2>
+  <div class="flow">
+    <div class="lane"><span class="lane-name">Onboarding</span>
+      <div class="node "><strong>Landing</strong><span>Value first</span></div><i class="arrow"></i><div class="node "><strong>Sign up</strong><span>Name + email</span></div><i class="arrow"></i><div class="node "><strong>Classes</strong><span>Step 1 of 3</span></div><i class="arrow"></i><div class="node "><strong>Study style</strong><span>Step 2 of 3</span></div><i class="arrow"></i><div class="node "><strong>Activities</strong><span>Step 3 of 3</span></div><i class="arrow"></i><div class="node accent"><strong>Week generated</strong><span>Conflict-free</span></div>
+    </div>
+    <div class="drop"></div>
+    <div class="lane hub"><span class="lane-name">Core app</span>
+      <div class="hubcard"><div class="node big"><strong>Overview</strong><span>Today · focus · deadlines</span></div><div class="chips"><span>Open focus window → add</span><span>Complete a deadline</span></div></div>
+      <i class="arrow both"></i>
+      <div class="hubcard"><div class="node big dark"><strong>Schedule</strong><span>Week + day agenda</span></div><div class="chips"><span>Add block</span><span>Edit block</span><span>Drag to move</span><span>Switch week</span></div></div>
+      <i class="arrow both"></i>
+      <div class="hubcard"><div class="node big"><strong>Study goals</strong><span>Hours · subjects · deadlines</span></div><div class="chips"><span>Mark session done</span><span>Adjust goal</span><span>Add deadline</span></div></div>
+    </div>
+    <div class="global"><span class="lane-name">Everywhere</span><span>Search  ⌘K</span><span>Notifications</span><span>Menu</span><span>Settings</span><span>Undo toasts</span></div>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>05</span></div></section>
+<section class="slide dark">
+  <div class="label on-dark"><span>05</span>Onboarding</div>
+  <h2 class="wide light">Three questions. Zero blank pages.</h2>
+  <div class="row four">
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/03-setup-classes.png" alt=""></div><figcaption><strong>Pick your classes</strong>Common classes are pre-filled — tap to keep or drop.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/04-setup-add-class.png" alt=""></div><figcaption><strong>Add your own</strong>Inline form: name, days, time, length, room.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/05-setup-study.png" alt=""></div><figcaption><strong>Set a study goal</strong>Hours per week + morning or evening focus.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/06-setup-activities.png" alt=""></div><figcaption><strong>Make room for life</strong>Clubs, work and gym become fixed blocks.</figcaption></figure>
+  </div><div class="foot on-dark"><span><i class="mark"></i>studyflow — UI/UX case study</span><span>06</span></div></section>
+<section class="slide paper split">
+  <div class="col stage duo">
+    <div class="phone back" style="--s:0.66"><img class="phone-img" src="phones/02-signup.png" alt=""></div>
+    <div class="phone " style="--s:0.8"><img class="phone-img" src="phones/07-week-ready.png" alt=""><b class="marker" style="top:28.70%;left:104%">1</b><b class="marker" style="top:41.29%;left:104%">2</b><b class="marker" style="top:54.84%;left:104%">3</b><b class="marker" style="top:82.92%;left:104%">4</b></div>
+  </div>
+  <div class="col text">
+    <div class="label "><span>06</span>The payoff</div>
+    <h2>Your week is ready — and it already makes sense.</h2>
+    <ol class="points"><li><strong>One-tap add</strong><span>The lime primary action is always within thumb reach.</span></li><li><strong>Day picker</strong><span>Dots show which days have plans; today is pre-selected.</span></li><li><strong>Color-coded agenda</strong><span>Purple classes, green study, orange activities — scannable in a glance.</span></li><li><strong>Instant feedback</strong><span>A toast confirms what was built: classes and focus blocks.</span></li></ol>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>07</span></div></section>
+<section class="slide lime split">
+  <div class="col text">
+    <div class="label "><span>07</span>Smart scheduling</div>
+    <h2>Editing that guides instead of scolds.</h2>
+    <ol class="points"><li><strong>Conflicts warn, never block</strong><span>Overlaps are explained in plain language — the student decides.</span></li><li><strong>Weekly or one-off</strong><span>A single toggle separates routines from this-week-only plans.</span></li><li><strong>Done means done</strong><span>Study blocks can be checked off right from the editor.</span></li><li><strong>Undo everywhere</strong><span>Every delete and move can be reversed from the toast.</span></li></ol>
+  </div>
+  <div class="col stage duo">
+    <div class="phone back" style="--s:0.7"><img class="phone-img" src="phones/11-edit-block.png" alt=""></div>
+    <div class="phone " style="--s:0.8"><img class="phone-img" src="phones/12-new-block-conflict.png" alt=""><b class="marker" style="top:81.95%;left:104%">1</b><b class="marker" style="top:62.59%;left:104%">2</b></div>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>08</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>08</span>Overview</div>
+  <div class="split-head"><h2>Today, at a glance.</h2><p class="lead">Opened between classes, the overview answers one question fast: <em>what’s next, and where can I fit focus time?</em></p></div>
+  <div class="row three-wide">
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/08-overview.png" alt=""></div><figcaption><strong>Next few hours</strong>A live timeline with an open focus window you can fill in one tap.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/09-overview-focus.png" alt=""></div><figcaption><strong>Weekly focus</strong>Progress ring and daily bars compare completed vs planned hours.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/16-notifications.png" alt=""></div><figcaption><strong>Gentle reminders</strong>Upcoming blocks and deadlines due soon, with one switch to pause.</figcaption></figure>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>09</span></div></section>
+<section class="slide dark split">
+  <div class="col text">
+    <div class="label on-dark"><span>09</span>Study goals</div>
+    <h2 class="light">Progress you can feel.</h2>
+    <p class="lead light">Focus hours, per-subject balance and deadlines live together, so planning and doing happen in the same place.</p>
+    <ol class="points"><li><strong>Weekly target</strong><span>A stepper adjusts the goal; the ring updates everywhere.</span></li><li><strong>By subject</strong><span>See which class is getting your attention — and which isn’t.</span></li><li><strong>Deadlines</strong><span>Add, complete and undo in seconds, sorted by what’s due.</span></li></ol>
+  </div>
+  <div class="col stage duo">
+    <div class="phone back" style="--s:0.7"><img class="phone-img" src="phones/13-goals.png" alt=""></div>
+    <div class="phone " style="--s:0.8"><img class="phone-img" src="phones/14-goals-deadlines.png" alt=""></div>
+  </div><div class="foot on-dark"><span><i class="mark"></i>studyflow — UI/UX case study</span><span>10</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>10</span>Always within reach</div>
+  <h2 class="wide">The small screens that make it feel complete.</h2>
+  <div class="row four">
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/15-search.png" alt=""></div><figcaption><strong>Search</strong>Find any class, block or deadline — ⌘K on desktop.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/17-menu.png" alt=""></div><figcaption><strong>Menu</strong>Navigation plus weekly progress, one tap away.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/18-settings.png" alt=""></div><figcaption><strong>Settings</strong>Profile, goal, focus time and reminders in a sheet.</figcaption></figure>
+    <figure><div class="phone " style="--s:0.6"><img class="phone-img" src="phones/10-schedule.png" alt=""></div><figcaption><strong>Day agenda</strong>Each day as a list — big targets, clear times.</figcaption></figure>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>11</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>11</span>Design system</div>
+  <h2 class="wide">Warm, soft and quietly confident.</h2>
+  <div class="ds">
+    <div class="ds-block"><h3>Color</h3><div class="swatches">
+      <div class="swatch" style="background:#20201E;color:#fff"><strong>Ink</strong><span>#20201E</span></div><div class="swatch" style="background:#F8F7F2;color:#20201e"><strong>Paper</strong><span>#F8F7F2</span></div><div class="swatch" style="background:#D9F99D;color:#20201e"><strong>Lime</strong><span>#D9F99D</span></div><div class="swatch" style="background:#7C5CFF;color:#fff"><strong>Class</strong><span>#7C5CFF</span></div><div class="swatch" style="background:#91AD4D;color:#fff"><strong>Study</strong><span>#91AD4D</span></div><div class="swatch" style="background:#FF9B62;color:#20201e"><strong>Activity</strong><span>#FF9B62</span></div>
+    </div></div>
+    <div class="ds-block"><h3>Type</h3>
+      <div class="type"><span class="t-display">Aa</span><div><strong>Manrope ExtraBold</strong><span>Headlines · tight tracking · −4%</span></div></div>
+      <div class="type"><span class="t-body">Aa</span><div><strong>DM Sans</strong><span>Body &amp; UI · 400 / 700</span></div></div>
+    </div>
+    <div class="ds-block"><h3>Components</h3>
+      <div class="comps">
+        <span class="c-btn primary">+ Add block</span><span class="c-btn dark">Create account →</span><span class="c-btn ghost">Edit week</span>
+        <span class="c-chip">Tomorrow</span><span class="c-chip warn">Overdue</span>
+        <span class="c-toggle on"><i></i></span><span class="c-toggle"><i></i></span>
+      </div>
+      <div class="blocks">
+        <div class="c-ev class"><strong>Calculus II</strong><span>9:00 AM · Room B-204</span></div>
+        <div class="c-ev study"><strong>Calculus review</strong><span>3:00 PM · Practice set 4</span></div>
+        <div class="c-ev activity"><strong>Design Club</strong><span>4:00 PM · Studio 3</span></div>
+      </div>
+    </div>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>12</span></div></section>
+<section class="slide lime">
+  <div class="label "><span>12</span>Responsive</div>
+  <h2 class="wide">Mobile first. Sunday-night-planning ready.</h2>
+  <div class="responsive">
+    <div class="browser"><div class="bar"><i></i><i></i><i></i><span>coolgithub1.github.io/School-Schedule-Builder-App</span></div><img src="shots/19-desktop-schedule.png" alt=""></div>
+    <div class="phone over" style="--s:0.72"><img class="phone-img" src="phones/10-schedule.png" alt=""></div>
+  </div>
+  <p class="aside">On desktop the week becomes a drag-and-drop calendar with a live “now” line; on phones it collapses into a day picker and agenda.</p><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>13</span></div></section>
+<section class="slide paper">
+  <div class="label "><span>13</span>UX details</div>
+  <h2 class="wide">Small details, big calm.</h2>
+  <div class="cards six">
+    <article><h3>Value before sign-up</h3><p>The landing page shows a real week preview; any email opens a sample week.</p></article>
+    <article><h3>Forgiving by default</h3><p>Deletes, moves and completions all come with an Undo toast.</p></article>
+    <article><h3>Plain-language errors</h3><p>“Pick at least one class to continue” beats a red outline every time.</p></article>
+    <article><h3>Thumb-zone actions</h3><p>A raised add button and bottom navigation keep key actions reachable.</p></article>
+    <article><h3>Keyboard friendly</h3><p>⌘K search, Esc to close, Enter to open — with visible focus states.</p></article>
+    <article><h3>Private by design</h3><p>No backend: schedules stay on the student’s own device.</p></article>
+  </div><div class="foot "><span><i class="mark"></i>studyflow — UI/UX case study</span><span>14</span></div></section>
+<section class="slide dark closing">
+  <div class="closing-copy">
+    <div class="brand"><i class="mark big"></i>studyflow</div>
+    <h1>Thanks for<br><em>scrolling by.</em></h1>
+    <p>Try the live prototype — it runs right in the browser.</p>
+    <div class="links"><span><b>Live</b>coolgithub1.github.io/School-Schedule-Builder-App</span><span><b>Code</b>github.com/Coolgithub1/School-Schedule-Builder-App</span></div>
+  </div>
+  <div class="cover-phones">
+    <div class="phone tilt-l" style="--s:0.7"><img class="phone-img" src="phones/13-goals.png" alt=""></div>
+    <div class="phone front" style="--s:0.82"><img class="phone-img" src="phones/07-week-ready.png" alt=""></div>
+  </div><div class="foot on-dark"><span><i class="mark"></i>studyflow — UI/UX case study</span><span>15</span></div></section></body></html>

@@ -1,0 +1,92 @@
+{
+  "01-welcome": {
+    "top": "#f8f7f2",
+    "bottom": "#f8f7f2",
+    "darkTop": false
+  },
+  "02-signup": {
+    "top": "#f4f7e8",
+    "bottom": "#f4f3ee",
+    "darkTop": false
+  },
+  "03-setup-classes": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "04-setup-add-class": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "05-setup-study": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "06-setup-activities": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "07-week-ready": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "08-overview": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "09-overview-focus": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "10-schedule": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "11-edit-block": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "12-new-block-conflict": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "13-goals": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "14-goals-deadlines": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "15-search": {
+    "top": "#bebeba",
+    "bottom": "#b5b4b0",
+    "darkTop": false
+  },
+  "16-notifications": {
+    "top": "#fefdfa",
+    "bottom": "#f2f1ec",
+    "darkTop": false
+  },
+  "17-menu": {
+    "top": "#fffefb",
+    "bottom": "#fffefb",
+    "darkTop": false
+  },
+  "18-settings": {
+    "top": "#bebeba",
+    "bottom": "#fffefb",
+    "darkTop": false
+  }
+}
